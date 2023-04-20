@@ -13,6 +13,8 @@ import { useState } from "react";
 import LanguageButton, { Language } from "../components/LanguageButton";
 import useUserData from "../hooks/useUserData";
 import { Link } from "react-router-dom";
+import SmallLogo from "../components/SmallLogo";
+import Logo from "../components/Logo";
 
 const Login = () => {
   const { setUserData } = useUserData();
@@ -43,6 +45,7 @@ const Login = () => {
       <Paper radius="md" p="xl" withBorder>
         <Stack align="center">
           <Title order={2}>Welcome to Let's Science</Title>
+          <Logo />
           {step.active === 1 && <Title order={4}>Choose your name</Title>}
           {step.active === 2 && (
             <Title order={4}>Choose your preferred language</Title>

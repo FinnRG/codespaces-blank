@@ -1,8 +1,8 @@
-import { Badge, Card, Group,  Text } from "@mantine/core";
+import { Badge, Card, Group, Text } from "@mantine/core";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { Challenge } from "../types";
-import Logo from "./Logo";
+import SmallLogo from "./SmallLogo";
 
 interface ChallengeCardProps {
   challenge: Challenge;
@@ -19,7 +19,7 @@ const ChallengeCard = ({ challenge, colorMap }: ChallengeCardProps) => {
       to={`/challenge/${challenge.index}`}
     >
       <Group position="apart">
-        <Logo />
+        <SmallLogo />
         <Badge color={colorMap[challenge.category]}>{challenge.category}</Badge>
       </Group>
       <Text size="lg" weight={500} mt="md">
