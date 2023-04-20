@@ -63,7 +63,6 @@ const ChallengeView = (): JSX.Element => {
       };
     });
   };
-  console.log(userData);
 
   if (finished) {
     return <Navigate to="/challenges" />;
