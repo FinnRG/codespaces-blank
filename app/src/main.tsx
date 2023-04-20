@@ -5,10 +5,11 @@ import { MantineProvider } from "@mantine/core";
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import localization from "./localization.json";
+import "./main.css";
 
 i18n.use(initReactI18next).init({
   resources: localization,
-  lng: "en",
+  lng: "de",
   fallbackLng: "en",
 
   interpolation: {

@@ -1,12 +1,20 @@
-import { useState } from "react";
-import { useTranslation } from "react-i18next";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Homescreen from "./Challenges";
+import ChallengeView from "./routes/ChallengeView";
 
-function App() {
-  const { t } = useTranslation();
+const App = (): JSX.Element => {
+  const router = createBrowserRouter([
+    {
+      path: "/challenges",
+      element: <Homescreen />,
+    },
+    {
+      path: "/challenge/:id",
+      element: <ChallengeView />,
+    },
+  ]);
 
-  return <></>;
-}
+  return <RouterProvider router={router} />;
+};
 
 export default App;
