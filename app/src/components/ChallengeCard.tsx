@@ -1,4 +1,4 @@
-import { Badge, Card, Group, Spoiler, Text } from "@mantine/core";
+import { Badge, Card, Group,  Text } from "@mantine/core";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { Challenge } from "../types";

@@ -1,4 +1,4 @@
-import { Accordion, Container, Grid, Stack } from "@mantine/core";
+import { Accordion,  Grid  } from "@mantine/core";
 import colorMap from "./utils/colorMap";
 import challenges from "./challenges.json";
 import ChallengeCard from "./components/ChallengeCard";
