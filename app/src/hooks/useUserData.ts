@@ -1,5 +1,4 @@
 import { useLocalStorage } from "@mantine/hooks";
-import { useEffect, useState } from "react";
 import SuperJSON from "superjson";
 
 export type ChallengeCategory = "energy" | "water" | "waste" | "co2";

@@ -4,7 +4,6 @@ import {
   Group,
   Paper,
   Stack,
-  Text,
   TextInput,
   Title,
 } from "@mantine/core";
