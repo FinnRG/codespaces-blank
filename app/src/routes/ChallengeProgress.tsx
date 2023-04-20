@@ -29,7 +29,8 @@ const ChallengeProgress = () => {
     StartedChallenge | undefined
   >(undefined);
   const [challenge] = useState<Challenge>(challenges[parsedId - 1]);
-  const [submitted, setSubmitted] = useState(false);
+
+  const [submitted, setSubmitted] = useState<boolean>(false);
 
   if (id === undefined) {
     return <Navigate to="/challenges" />;
@@ -71,6 +72,7 @@ const ChallengeProgress = () => {
         startedChallenges: startedChallenges,
       };
     });
+    setSubmitted(true);
   };
 
   if (submitted) {
