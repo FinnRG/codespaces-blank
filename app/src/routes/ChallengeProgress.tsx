@@ -1,4 +1,12 @@
-import { Stack, Title, Text, Button, Group, Alert } from "@mantine/core";
+import {
+  Stack,
+  Title,
+  Text,
+  Button,
+  Group,
+  Alert,
+  Container,
+} from "@mantine/core";
 import { useEffect, useState } from "react";
 import { Navigate, useParams } from "react-router";
 import { Link } from "react-router-dom";
@@ -156,53 +164,57 @@ const ChallengeProgress = () => {
 
   if (challengeDone) {
     return (
-      <Stack align="center">
-        <Title>Challenge Completed</Title>
-        <Text>
-          Congratulations, you've successfully completed the challenge "
-          {t(`challenge-${challengeProgress?.challengeId}-title`)}". You've
-          earned {challenge.points} points.
-        </Text>
-        <Stack>
-          <Group position="right" mt="xl">
-            <Button color="green" component={Link} to="/challenges">
-              Done
-            </Button>
-          </Group>
-        </Stack>{" "}
-      </Stack>
+      <Container>
+        <Stack align="center">
+          <Title>Challenge Completed</Title>
+          <Text>
+            Congratulations, you've successfully completed the challenge "
+            {t(`challenge-${challengeProgress?.challengeId}-title`)}". You've
+            earned {challenge.points} points.
+          </Text>
+          <Stack>
+            <Group position="right" mt="xl">
+              <Button color="green" component={Link} to="/challenges">
+                Done
+              </Button>
+            </Group>
+          </Stack>
+        </Stack>
+      </Container>
     );
   }
 
   return (
-    <Stack align="center">
-      <Title>{t(`challenge-${challenge.index}-title`)}</Title>
-      <Text>{t(`challenge-${challenge.index}-content`)}</Text>
-      {showChallengeAlert && (
-        <Alert
-          icon={<IconAlertCircle size={16} />}
-          title="Can't submit progress today"
-        >
-          This challenge has already been completed today. Come back tomorrow!
-        </Alert>
-      )}
-      <Stack>
-        <Group position="right" mt="xl">
-          <Button component={Link} to="/challenges" variant="outline">
-            Go Back
-          </Button>
-          <Button color="red" onClick={() => cancelProgress()}>
-            Cancel Challenge
-          </Button>
-        </Group>
-        {challenge.type === "todo" && (
-          <Button onClick={() => addProgress(1)}>Done</Button>
+    <Container>
+      <Stack align="center">
+        <Title>{t(`challenge-${challenge.index}-title`)}</Title>
+        <Text>{t(`challenge-${challenge.index}-content`)}</Text>
+        {showChallengeAlert && (
+          <Alert
+            icon={<IconAlertCircle size={16} />}
+            title="Can't submit progress today"
+          >
+            This challenge has already been completed today. Come back tomorrow!
+          </Alert>
         )}
-        {challenge.type === "weekly" && !showChallengeAlert && (
-          <Button onClick={() => addProgress(1)}>Add Progress</Button>
-        )}
+        <Stack>
+          <Group position="right" mt="xl">
+            <Button component={Link} to="/challenges" variant="outline">
+              Go Back
+            </Button>
+            <Button color="red" onClick={() => cancelProgress()}>
+              Cancel Challenge
+            </Button>
+          </Group>
+          {challenge.type === "todo" && (
+            <Button onClick={() => addProgress(1)}>Done</Button>
+          )}
+          {challenge.type === "weekly" && !showChallengeAlert && (
+            <Button onClick={() => addProgress(1)}>Add Progress</Button>
+          )}
+        </Stack>
       </Stack>
-    </Stack>
+    </Container>
   );
 };
 

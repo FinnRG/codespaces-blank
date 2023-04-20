@@ -1,6 +1,6 @@
 import { Link, Navigate, useParams } from "react-router-dom";
 import challenges from "../challenges.json";
-import { Button, Group, Stack, Text, Title } from "@mantine/core";
+import { Button, Container, Group, Stack, Text, Title } from "@mantine/core";
 import { useTranslation } from "react-i18next";
 import useUserData from "../hooks/useUserData";
 import { Challenge } from "../types";
@@ -49,18 +49,20 @@ const ChallengeView = (): JSX.Element => {
   }
 
   return (
-    <Stack align="center">
-      <Title>{t(`challenge-${parsedId}-title`)}</Title>
-      <Text>{t(`challenge-${parsedId}-content`)}</Text>
-      <Group position="right" mt="xl">
-        <Button component={Link} to="/challenges" variant="outline">
-          Go Back
-        </Button>
-        <Button onClick={() => startChallenge(challenge)}>
-          Start Challenge
-        </Button>
-      </Group>
-    </Stack>
+    <Container>
+      <Stack align="center">
+        <Title>{t(`challenge-${parsedId}-title`)}</Title>
+        <Text>{t(`challenge-${parsedId}-content`)}</Text>
+        <Group position="right" mt="xl">
+          <Button component={Link} to="/challenges" variant="outline">
+            Go Back
+          </Button>
+          <Button onClick={() => startChallenge(challenge)}>
+            Start Challenge
+          </Button>
+        </Group>
+      </Stack>
+    </Container>
   );
 };
 
