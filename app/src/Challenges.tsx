@@ -14,7 +14,7 @@ const getCategories = (challenges: Challenge[]) => {
 
 const Homescreen = (): JSX.Element => {
   const { userData } = useUserData();
-  const [value, setValueHandlers] = useListState<string>([]);
+  const [value, setValueHandlers] = useListState<string>(["My Challenges"]);
   const colors = colorMap(challenges);
   const categories = getCategories(challenges);
 
