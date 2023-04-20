@@ -8,6 +8,7 @@ import { isNumeric } from "../utils/isNumeric";
 import challenges from "../challenges.json";
 import { useTranslation } from "react-i18next";
 import { IconAlertCircle } from "@tabler/icons-react";
+import confetti from "canvas-confetti";
 
 const oneDayAgo = (date: Date): boolean => {
   const day = 1000 * 60 * 60 * 24;
@@ -15,6 +16,44 @@ const oneDayAgo = (date: Date): boolean => {
 
   // @ts-ignore
   return date > dayAgo;
+};
+
+const showFireworks = () => {
+  var count = 200;
+  var defaults = {
+    origin: { y: 0.7 },
+  };
+
+  function fire(particleRatio: number, opts: object) {
+    confetti(
+      Object.assign({}, defaults, opts, {
+        particleCount: Math.floor(count * particleRatio),
+      })
+    );
+  }
+
+  fire(0.25, {
+    spread: 26,
+    startVelocity: 55,
+  });
+  fire(0.2, {
+    spread: 60,
+  });
+  fire(0.35, {
+    spread: 100,
+    decay: 0.91,
+    scalar: 0.8,
+  });
+  fire(0.1, {
+    spread: 120,
+    startVelocity: 25,
+    decay: 0.92,
+    scalar: 1.2,
+  });
+  fire(0.1, {
+    spread: 120,
+    startVelocity: 45,
+  });
 };
 
 const ChallengeProgress = () => {
@@ -28,29 +67,35 @@ const ChallengeProgress = () => {
   const [challengeProgress, setChallengeProgress] = useState<
     StartedChallenge | undefined
   >(undefined);
+  const parsedProgress = challengeProgress?.progress ?? 0;
   const [challenge] = useState<Challenge>(challenges[parsedId - 1]);
-
   const [submitted, setSubmitted] = useState<boolean>(false);
+  const [challengeDone, setChallengeDone] = useState<boolean>(false);
 
-  if (id === undefined) {
-    return <Navigate to="/challenges" />;
-  }
+  const isChallengeDone = (): boolean =>
+    challenge.type === "todo" ? parsedProgress > 0 : parsedProgress >= 7;
 
   useEffect(() => {
     setChallengeProgress(
       userData.startedChallenges.find((ch) => ch.challengeId == parsedId)
     );
+
+    if (!challengeDone) {
+      setChallengeDone(isChallengeDone());
+    }
   }, [userData]);
 
   const addProgress = (progress: number) => {
     setUserData((prev) => {
       const startedChallenges = prev.startedChallenges.map((ch) => {
         if (ch.challengeId === parsedId) {
-          return {
+          const newChallengeProgress = {
             ...ch,
             updatedAt: new Date(),
             progress: ch.progress + progress,
           };
+          setChallengeProgress(newChallengeProgress);
+          return newChallengeProgress;
         }
         return ch;
       });
@@ -75,7 +120,31 @@ const ChallengeProgress = () => {
     setSubmitted(true);
   };
 
-  if (submitted) {
+  useEffect(() => {
+    if (challengeDone) {
+      showFireworks();
+      setUserData((prev) => {
+        const startedChallenges = prev.startedChallenges.filter(
+          (ch) => ch.challengeId !== challengeProgress?.challengeId
+        );
+        const completedChallenges = [
+          ...prev.completedChallenges,
+          {
+            challengeId: challengeProgress!.challengeId,
+            dateStarted: challengeProgress!.dateStarted,
+            dateEnded: new Date(),
+          },
+        ];
+        return {
+          ...prev,
+          startedChallenges,
+          completedChallenges,
+        };
+      });
+    }
+  }, [challengeDone]);
+
+  if (!challengeDone && !isChallengeDone() && submitted) {
     return <Navigate to="/challenges" />;
   }
 
@@ -84,6 +153,26 @@ const ChallengeProgress = () => {
   );
   const showChallengeAlert =
     challenge.type === "weekly" && oneDayAgo(updated_at);
+
+  if (challengeDone) {
+    return (
+      <Stack align="center">
+        <Title>Challenge Completed</Title>
+        <Text>
+          Congratulations, you've successfully completed the challenge "
+          {t(`challenge-${challengeProgress?.challengeId}-title`)}". You've
+          earned {challenge.points} points.
+        </Text>
+        <Stack>
+          <Group position="right" mt="xl">
+            <Button color="green" component={Link} to="/challenges">
+              Done
+            </Button>
+          </Group>
+        </Stack>{" "}
+      </Stack>
+    );
+  }
 
   return (
     <Stack align="center">
@@ -107,7 +196,7 @@ const ChallengeProgress = () => {
           </Button>
         </Group>
         {challenge.type === "todo" && (
-          <Button onClick={() => addProgress(1)}>Add Progress</Button>
+          <Button onClick={() => addProgress(1)}>Done</Button>
         )}
         {challenge.type === "weekly" && !showChallengeAlert && (
           <Button onClick={() => addProgress(1)}>Add Progress</Button>
