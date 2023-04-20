@@ -44,6 +44,12 @@ const Homescreen = (): JSX.Element => {
             <Grid>
               {challenges
                 .filter((ch) => ch.category === category)
+                .filter(
+                  (ch) =>
+                    userData.startedChallenges.filter(
+                      (c) => c.challengeId === ch.index
+                    ).length === 0
+                )
                 .map((ch, key) => (
                   <Grid.Col span={6} key={key}>
                     <ChallengeCard challenge={ch} colorMap={colors} />
