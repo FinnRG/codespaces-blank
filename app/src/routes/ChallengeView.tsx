@@ -19,14 +19,7 @@ import { useTranslation } from "react-i18next";
 import useUserData from "../hooks/useUserData";
 import { Challenge } from "../types";
 import { useState } from "react";
-
-function isNumeric(str: string | undefined) {
-  if (typeof str != "string") return false; // we only process strings!
-  return (
-    !isNaN(str as unknown as number) && // use type coercion to parse the _entirety_ of the string (`parseFloat` alone does not do this)...
-    !isNaN(parseFloat(str))
-  ); // ...and ensure strings of whitespace fail
-}
+import { isNumeric } from "../utils/isNumeric";
 
 const ChallengeView = (): JSX.Element => {
   const { id } = useParams();
@@ -58,6 +51,8 @@ const ChallengeView = (): JSX.Element => {
           {
             challengeId: challenge.index,
             dateStarted: new Date(),
+            progress: 0,
+            updatedAt: new Date(),
           },
         ],
       };

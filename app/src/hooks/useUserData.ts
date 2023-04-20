@@ -1,4 +1,5 @@
 import { useLocalStorage } from "@mantine/hooks";
+import SuperJSON from "superjson";
 
 export type ChallengeCategory = "energy" | "water" | "waste" | "co2";
 
@@ -10,7 +11,9 @@ export interface CompletedChallenge {
 
 export interface StartedChallenge {
   challengeId: number;
+  progress: number;
   dateStarted: Date;
+  updatedAt: Date;
 }
 
 export interface Badge {
@@ -33,16 +36,21 @@ interface UseUserDataResult {
 }
 
 const useUserData = (): UseUserDataResult => {
+  const defaultValue = {
+    name: "No Name",
+    points: 0,
+    preferredLanguage: "en",
+    completedChallenges: [],
+    startedChallenges: [],
+    badges: [],
+  };
+
   const [userData, setUserData] = useLocalStorage<UserData>({
     key: "letsscience-user-data",
-    defaultValue: {
-      name: "No Name",
-      points: 0,
-      preferredLanguage: "en",
-      completedChallenges: [],
-      startedChallenges: [],
-      badges: [],
-    },
+    defaultValue,
+    serialize: SuperJSON.stringify,
+    deserialize: (str) =>
+      str === undefined ? defaultValue : SuperJSON.parse(str),
   });
 
   return { userData, setUserData };

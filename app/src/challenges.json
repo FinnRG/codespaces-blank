@@ -3,174 +3,203 @@
         "index": 1,
         "points": 3,
         "difficulty": "easy",
-        "category": "water"
+        "category": "water",
+        "type": "weekly"
     },
     {
         "index": 2,
         "points": 8,
         "difficulty": "medium",
-        "category": "waste"
+        "category": "waste",
+        "type": "weekly"
     },
     {
         "index": 3,
         "points": 7,
         "difficulty": "easy",
-        "category": "waste"
+        "category": "waste",
+        "type": "weekly"
     },
     {
         "index": 4,
         "points": 3,
         "difficulty": "easy",
-        "category": "co2"
+        "category": "co2",
+        "type": "weekly"
     },
     {
         "index": 5,
         "points": 3,
         "difficulty": "easy",
-        "category": "co2"
+        "category": "co2",
+        "type": "todo"
     },
     {
         "index": 6,
         "points": 15,
         "difficulty": "medium",
-        "category": "co2"
+        "category": "co2",
+        "type": "weekly"
     },
     {
         "index": 7,
         "points": 5,
         "difficulty": "easy",
-        "category": "energy"
+        "category": "energy",
+        "type": "weekly"
     },
     {
         "index": 8,
         "points": 3,
         "difficulty": "easy",
-        "category": "co2"
+        "category": "co2",
+        "type": "weekly"
     },
     {
         "index": 9,
         "points": 3,
         "difficulty": "easy",
-        "category": "energy"
+        "category": "energy",
+        "type": "weekly"
     },
     {
         "index": 10,
         "points": 5,
         "difficulty": "easy",
-        "category": "waste"
+        "category": "waste",
+        "type": "weekly"
     },
     {
         "index": 11,
         "points": 3,
         "difficulty": "easy",
-        "category": "energy"
+        "category": "energy",
+        "type": "weekly"
     },
     {
         "index": 12,
         "points": 15,
         "difficulty": "medium",
-        "category": "waste"
+        "category": "waste",
+        "type": "todo"
     },
     {
         "index": 13,
         "points": 30,
         "difficulty": "hard",
-        "category": "energy"
+        "category": "energy",
+        "type": "weekly"
     },
     {
         "index": 14,
         "points": 5,
         "difficulty": "easy",
-        "category": "waste"
+        "category": "waste",
+        "type": "weekly"
     },
     {
         "index": 15,
         "points": 3,
         "difficulty": "easy",
-        "category": "co2"
+        "category": "co2",
+        "type": "weekly"
     },
     {
         "index": 16,
         "points": 5,
         "difficulty": "easy",
-        "category": "water"
+        "category": "water",
+        "type": "weekly"
     },
     {
         "index": 17,
         "points": 10,
         "difficulty": "easy",
-        "category": "water"
+        "category": "water",
+        "type": "weekly"
     },
     {
         "index": 18,
         "points": 5,
         "difficulty": "easy",
-        "category": "waste"
+        "category": "waste",
+        "type": "weekly"
     },
     {
         "index": 19,
         "points": 30,
         "difficulty": "hard",
-        "category": "energy"
+        "category": "energy",
+        "type": "todo"
     },
     {
         "index": 20,
         "points": 3,
         "difficulty": "easy",
-        "category": "co2"
+        "category": "co2",
+        "type": "weekly"
     },
     {
         "index": 21,
         "points": 5,
         "difficulty": "easy",
-        "category": "water"
+        "category": "water",
+        "type": "weekly"
     },
     {
         "index": 22,
         "points": 8,
         "difficulty": "easy",
-        "category": "water"
+        "category": "water",
+        "type": "weekly"
     },
     {
         "index": 23,
         "points": 5,
         "difficulty": "easy",
-        "category": "water"
+        "category": "water",
+        "type": "weekly"
     },
     {
         "index": 24,
         "points": 3,
         "difficulty": "easy",
-        "category": "energy"
+        "category": "energy",
+        "type": "weekly"
     },
     {
         "index": 25,
         "points": 12,
         "difficulty": "medium",
-        "category": "waste"
+        "category": "waste",
+        "type": "weekly"
     },
     {
         "index": 26,
         "points": 5,
         "difficulty": "easy",
-        "category": "waste"
+        "category": "waste",
+        "type": "weekly"
     },
     {
         "index": 27,
         "points": 5,
         "difficulty": "easy",
-        "category": "waste"
+        "category": "waste",
+        "type": "weekly"
     },
     {
         "index": 28,
         "points": 7,
         "difficulty": "medium",
-        "category": "energy"
+        "category": "energy",
+        "type": "todo"
     },
     {
         "index": 29,
         "points": 3,
         "difficulty": "easy",
-        "category": "co2"
+        "category": "co2",
+        "type": "weekly"
     }
 ]

@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Homescreen from "./Challenges";
 import ChallengeView from "./routes/ChallengeView";
+import ChallengeProgress from "./routes/ChallengeProgress";
 
 const App = (): JSX.Element => {
   const router = createBrowserRouter([
@@ -11,6 +12,10 @@ const App = (): JSX.Element => {
     {
       path: "/challenge/:id",
       element: <ChallengeView />,
+    },
+    {
+      path: "/challenge/:id/progress",
+      element: <ChallengeProgress />,
     },
   ]);
 
