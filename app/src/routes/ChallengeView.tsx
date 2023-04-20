@@ -27,7 +27,6 @@ const ChallengeView = (): JSX.Element => {
           (ch) => ch.challengeId === challenge.index
         ) !== undefined
       ) {
-        console.log("Already done");
         return prev;
       }
       setFinished(true);

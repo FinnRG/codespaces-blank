@@ -1,18 +1,18 @@
 import { Accordion, Grid } from "@mantine/core";
-import colorMap from "./utils/colorMap";
-import challenges from "./challenges.json";
-import ChallengeCard from "./components/ChallengeCard";
+import colorMap from "../utils/colorMap";
+import challenges from "../challenges.json";
+import ChallengeCard from "./ChallengeCard";
 import { useListState } from "@mantine/hooks";
-import { Challenge } from "./types";
-import useUserData from "./hooks/useUserData";
-import ChallengeProgressCard from "./components/ChallengeProgressCard";
+import { Challenge } from "../types";
+import useUserData from "../hooks/useUserData";
+import ChallengeProgressCard from "./ChallengeProgressCard";
 
 const getCategories = (challenges: Challenge[]) => {
   const l = [...new Set(challenges.flatMap((ch) => ch.category))];
   return l;
 };
 
-const Homescreen = (): JSX.Element => {
+const Challenges = (): JSX.Element => {
   const { userData } = useUserData();
   const [value, setValueHandlers] = useListState<string>(["My Challenges"]);
   const colors = colorMap(challenges);
@@ -63,4 +63,4 @@ const Homescreen = (): JSX.Element => {
   );
 };
 
-export default Homescreen;
+export default Challenges;
