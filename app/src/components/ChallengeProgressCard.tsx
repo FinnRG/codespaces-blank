@@ -53,7 +53,6 @@ const ChallengeProgressCard = ({
             color="dimmed"
             size="sm"
           >
-            {" "}
             {t(`challenge-${challenge.index}-content`)}
           </Text>
           <Progress value={progress} mt={5} />

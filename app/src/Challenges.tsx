@@ -20,21 +20,23 @@ const Homescreen = (): JSX.Element => {
 
   return (
     <Accordion multiple value={value} onChange={setValueHandlers.setState}>
-      <Accordion.Item value="My Challenges">
-        <Accordion.Control>MY CHALLENGES</Accordion.Control>
-        <Accordion.Panel>
-          <Grid>
-            {userData.startedChallenges.map((ch, key) => (
-              <Grid.Col span={6} key={key}>
-                <ChallengeProgressCard
-                  startedChallenge={ch}
-                  challenge={challenges[ch.challengeId - 1]}
-                />
-              </Grid.Col>
-            ))}
-          </Grid>
-        </Accordion.Panel>
-      </Accordion.Item>
+      {userData.startedChallenges.length > 0 && (
+        <Accordion.Item value="My Challenges">
+          <Accordion.Control>MY CHALLENGES</Accordion.Control>
+          <Accordion.Panel>
+            <Grid>
+              {userData.startedChallenges.map((ch, key) => (
+                <Grid.Col span={6} key={key}>
+                  <ChallengeProgressCard
+                    startedChallenge={ch}
+                    challenge={challenges[ch.challengeId - 1]}
+                  />
+                </Grid.Col>
+              ))}
+            </Grid>
+          </Accordion.Panel>
+        </Accordion.Item>
+      )}
       {categories.map((category, key) => (
         <Accordion.Item value={category} key={key}>
           <Accordion.Control>{category.toUpperCase()}</Accordion.Control>

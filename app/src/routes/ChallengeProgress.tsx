@@ -28,8 +28,7 @@ const ChallengeProgress = () => {
   const [challengeProgress, setChallengeProgress] = useState<
     StartedChallenge | undefined
   >(undefined);
-  const [challenge] = useState<Challenge>(challenges[parsedId]);
-  const [progress, setProgress] = useState(0);
+  const [challenge] = useState<Challenge>(challenges[parsedId - 1]);
   const [submitted, setSubmitted] = useState(false);
 
   if (id === undefined) {
@@ -44,11 +43,22 @@ const ChallengeProgress = () => {
 
   const addProgress = (progress: number) => {
     setUserData((prev) => {
-      prev.startedChallenges.find(
-        (ch) => ch.challengeId === parsedId
-      )!.progress += progress;
-      return prev;
+      const startedChallenges = prev.startedChallenges.map((ch) => {
+        if (ch.challengeId === parsedId) {
+          return {
+            ...ch,
+            updatedAt: new Date(),
+            progress: ch.progress + 1,
+          };
+        }
+        return ch;
+      });
+      return {
+        ...prev,
+        startedChallenges,
+      };
     });
+    setSubmitted(true);
   };
 
   const cancelProgress = () => {
@@ -77,9 +87,6 @@ const ChallengeProgress = () => {
     <Stack align="center">
       <Title>{t(`challenge-${challenge.index}-title`)}</Title>
       <Text>{t(`challenge-${challenge.index}-content`)}</Text>
-      {challenge.type === "todo" && (
-        <Button onClick={() => setProgress(1)}>Done</Button>
-      )}
       {showChallengeAlert && (
         <Alert
           icon={<IconAlertCircle size={16} />}
@@ -98,12 +105,7 @@ const ChallengeProgress = () => {
           </Button>
         </Group>
         {challenge.type === "todo" && (
-          <Button
-            loading={submitted === false}
-            onClick={() => addProgress(progress)}
-          >
-            Add Progress
-          </Button>
+          <Button onClick={() => addProgress(1)}>Add Progress</Button>
         )}
         {challenge.type === "weekly" && !showChallengeAlert && (
           <Button onClick={() => addProgress(1)}>Add Progress</Button>

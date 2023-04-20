@@ -13,7 +13,7 @@ export interface StartedChallenge {
   challengeId: number;
   progress: number;
   dateStarted: Date;
-  updatedAt: Date;
+  updatedAt?: Date;
 }
 
 export interface Badge {

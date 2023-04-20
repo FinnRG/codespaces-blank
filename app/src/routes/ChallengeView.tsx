@@ -32,7 +32,7 @@ const ChallengeView = (): JSX.Element => {
   }
 
   const parsedId = parseInt(id);
-  const challenge = challenges[parsedId];
+  const challenge = challenges[parsedId - 1];
 
   const startChallenge = (challenge: Challenge) => {
     setUserData((prev) => {
@@ -41,6 +41,7 @@ const ChallengeView = (): JSX.Element => {
           (ch) => ch.challengeId === challenge.index
         ) !== undefined
       ) {
+        console.log("Already done");
         return prev;
       }
       setFinished(true);
@@ -52,7 +53,6 @@ const ChallengeView = (): JSX.Element => {
             challengeId: challenge.index,
             dateStarted: new Date(),
             progress: 0,
-            updatedAt: new Date(),
           },
         ],
       };
