@@ -11,6 +11,7 @@ import Login from "./routes/Login";
 
 const App = (): JSX.Element => {
   const { firstLogin } = useUserData();
+
   const router = createBrowserRouter([
     {
       path: "/challenges",

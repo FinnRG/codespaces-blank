@@ -3,6 +3,8 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { Challenge } from "../types";
 import SmallLogo from "./SmallLogo";
+import useUserData from "../hooks/useUserData";
+import { useEffect } from "react";
 
 interface ChallengeCardProps {
   challenge: Challenge;
@@ -11,6 +13,12 @@ interface ChallengeCardProps {
 
 const ChallengeCard = ({ challenge, colorMap }: ChallengeCardProps) => {
   const { t } = useTranslation();
+  const { setTourDone } = useUserData();
+
+  useEffect(() => {
+    setTourDone();
+  }, []);
+
   return (
     <Card
       withBorder

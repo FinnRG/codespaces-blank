@@ -26,6 +26,7 @@ export interface UserData {
   preferredLanguage: string;
   completedChallenges: CompletedChallenge[];
   startedChallenges: StartedChallenge[];
+  tourDone: boolean;
   badges: Badge[];
 }
 
@@ -33,6 +34,7 @@ interface UseUserDataResult {
   userData: UserData;
   setUserData: (val: UserData | ((prev: UserData) => UserData)) => void;
   firstLogin: boolean;
+  setTourDone: () => void;
 }
 
 const useUserData = (): UseUserDataResult => {
@@ -41,6 +43,7 @@ const useUserData = (): UseUserDataResult => {
     preferredLanguage: "en",
     completedChallenges: [],
     startedChallenges: [],
+    tourDone: false,
     badges: [],
   };
 
@@ -55,7 +58,14 @@ const useUserData = (): UseUserDataResult => {
 
   const firstLogin = userData.name === defaultValue.name;
 
-  return { userData, setUserData, firstLogin };
+  const setTourDone = () => {
+    setUserData((prev) => ({
+      ...prev,
+      tourDone: true,
+    }));
+  };
+
+  return { userData, setUserData, firstLogin, setTourDone };
 };
 
 export default useUserData;

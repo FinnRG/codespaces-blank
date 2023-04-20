@@ -13,7 +13,6 @@ import { useState } from "react";
 import LanguageButton, { Language } from "../components/LanguageButton";
 import useUserData from "../hooks/useUserData";
 import { Link } from "react-router-dom";
-import SmallLogo from "../components/SmallLogo";
 import Logo from "../components/Logo";
 
 const Login = () => {

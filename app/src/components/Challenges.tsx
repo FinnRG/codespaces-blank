@@ -19,7 +19,12 @@ const Challenges = (): JSX.Element => {
   const categories = getCategories(challenges);
 
   return (
-    <Accordion multiple value={value} onChange={setValueHandlers.setState}>
+    <Accordion
+      className={"tour-step-2"}
+      multiple
+      value={value}
+      onChange={setValueHandlers.setState}
+    >
       {userData.startedChallenges.length > 0 && (
         <Accordion.Item value="My Challenges">
           <Accordion.Control>MY CHALLENGES</Accordion.Control>
@@ -38,7 +43,11 @@ const Challenges = (): JSX.Element => {
         </Accordion.Item>
       )}
       {categories.map((category, key) => (
-        <Accordion.Item value={category} key={key}>
+        <Accordion.Item
+          className={key === 0 ? "tour-step-3" : ""}
+          value={category}
+          key={key}
+        >
           <Accordion.Control>{category.toUpperCase()}</Accordion.Control>
           <Accordion.Panel>
             <Grid>
@@ -51,7 +60,13 @@ const Challenges = (): JSX.Element => {
                     ).length === 0
                 )
                 .map((ch, key) => (
-                  <Grid.Col span={6} key={key}>
+                  <Grid.Col
+                    className={
+                      key === 0 && category === "water" ? "tour-step-4" : ""
+                    }
+                    span={6}
+                    key={key}
+                  >
                     <ChallengeCard challenge={ch} colorMap={colors} />
                   </Grid.Col>
                 ))}
