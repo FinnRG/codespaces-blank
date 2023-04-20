@@ -1,20 +1,6 @@
-import {
-  Link,
-  Navigate,
-  RouterProvider,
-  useNavigate,
-  useParams,
-} from "react-router-dom";
+import { Link, Navigate, useParams } from "react-router-dom";
 import challenges from "../challenges.json";
-import {
-  Button,
-  Group,
-  Loader,
-  Space,
-  Stack,
-  Text,
-  Title,
-} from "@mantine/core";
+import { Button, Group, Stack, Text, Title } from "@mantine/core";
 import { useTranslation } from "react-i18next";
 import useUserData from "../hooks/useUserData";
 import { Challenge } from "../types";

@@ -48,7 +48,7 @@ const ChallengeProgress = () => {
           return {
             ...ch,
             updatedAt: new Date(),
-            progress: ch.progress + 1,
+            progress: ch.progress + progress,
           };
         }
         return ch;
