@@ -1,4 +1,4 @@
-import { RingProgress, Text, Paper, Center, Group } from "@mantine/core";
+import { RingProgress, Text, Center, Group } from "@mantine/core";
 import { IconArrowUpRight, IconArrowDownRight } from "@tabler/icons-react";
 
 interface StatsRingProps {
