@@ -26,6 +26,21 @@ const LanguageButton = (props: LanguageButtonProps) => {
     }
   }, [language]);
 
+  const languageIcon =
+    language === "ca" ? (
+      <CAFlag w={17} />
+    ) : language === "de" ? (
+      <DEFlag w={17} />
+    ) : language === "dk" ? (
+      <DKFlag w={17} />
+    ) : language === "en" ? (
+      <GBFlag w={17} />
+    ) : language === "es" ? (
+      <ESFlag w={17} />
+    ) : (
+      <PTFlag w={17} />
+    );
+
   return (
     <Menu
       transitionProps={{ transition: "pop-top-right" }}
@@ -34,7 +49,11 @@ const LanguageButton = (props: LanguageButtonProps) => {
       withinPortal
     >
       <Menu.Target>
-        <Button rightIcon={<IconChevronDown size={18} stroke={1.5} />} pr={12}>
+        <Button
+          leftIcon={languageIcon}
+          rightIcon={<IconChevronDown size={18} stroke={1.5} />}
+          pr={12}
+        >
           Language
         </Button>
       </Menu.Target>
