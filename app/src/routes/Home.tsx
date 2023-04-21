@@ -1,4 +1,4 @@
-import { Container, Stack, Text } from "@mantine/core";
+import { Container, Grid, Stack, Text } from "@mantine/core";
 import Challenges from "../components/Challenges";
 import { StatsRing } from "../components/StatsRing";
 import useUserData from "../hooks/useUserData";
@@ -9,6 +9,8 @@ import {
 } from "../utils/calculateLevel";
 import Tour from "reactour";
 import { useState } from "react";
+import Card from "../components/Card";
+import { IconGraph, IconUser } from "@tabler/icons-react";
 
 const Home = (): JSX.Element => {
   const { userData, setTourDone } = useUserData();
@@ -17,17 +19,39 @@ const Home = (): JSX.Element => {
 
   return (
     <Stack>
-      <StatsRing
-        data={[
-          {
-            label: "You are currently Level",
-            stats: calculateLevel(points),
-            progress: calculateProgress(points),
-            color: "blue",
-            icon: "up",
-          },
-        ]}
-      />
+      <Grid px="sm">
+        <Grid.Col span={12}>
+          <Card>
+            <StatsRing
+              data={[
+                {
+                  label: "You are currently Level",
+                  stats: calculateLevel(points),
+                  progress: calculateProgress(points),
+                  color: "blue",
+                  icon: "up",
+                },
+              ]}
+            />
+          </Card>
+        </Grid.Col>
+        <Grid.Col span={6}>
+          <Card bg="red" to="/login">
+            <Stack pt="xs" align="center">
+              <IconUser color="red" />
+              <Text>Change Profile</Text>
+            </Stack>
+          </Card>
+        </Grid.Col>
+        <Grid.Col span={6}>
+          <Card bg="green" to="/stats">
+            <Stack pt="xs" align="center">
+              <IconGraph color="green" />
+              <Text>Challenge History</Text>
+            </Stack>
+          </Card>
+        </Grid.Col>
+      </Grid>
       <Challenges />
       <Tour
         isOpen={tourOpen}
