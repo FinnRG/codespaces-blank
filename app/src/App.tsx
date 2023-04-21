@@ -8,9 +8,20 @@ import ChallengeView from "./routes/ChallengeView";
 import ChallengeProgress from "./routes/ChallengeProgress";
 import useUserData from "./hooks/useUserData";
 import Login from "./routes/Login";
+import {
+  ColorScheme,
+  ColorSchemeProvider,
+  MantineProvider,
+  Space,
+} from "@mantine/core";
+import { useState } from "react";
 
 const App = (): JSX.Element => {
   const { firstLogin } = useUserData();
+  const [colorScheme, setColorScheme] = useState<ColorScheme>("light");
+  const toggleColorScheme = (value?: ColorScheme) => {
+    setColorScheme(value || (colorScheme === "dark" ? "light" : "dark"));
+  };
 
   const router = createBrowserRouter([
     {
@@ -39,7 +50,21 @@ const App = (): JSX.Element => {
     },
   ]);
 
-  return <RouterProvider router={router} />;
+  return (
+    <ColorSchemeProvider
+      colorScheme={colorScheme}
+      toggleColorScheme={toggleColorScheme}
+    >
+      <MantineProvider
+        theme={{ colorScheme }}
+        withGlobalStyles
+        withNormalizeCSS
+      >
+        <Space h="xs" />
+        <RouterProvider router={router} />;
+      </MantineProvider>
+    </ColorSchemeProvider>
+  );
 };
 
 export default App;

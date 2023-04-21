@@ -14,12 +14,13 @@ import LanguageButton, { Language } from "../components/LanguageButton";
 import useUserData from "../hooks/useUserData";
 import { Link } from "react-router-dom";
 import Logo from "../components/Logo";
+import ColorschemePicker from "../components/ColorschemePicker";
 
 const Login = () => {
   const { setUserData } = useUserData();
   const [name, setName] = useInputState<string>("");
   const [language, setLanguage] = useState<Language>("en");
-  const step = usePagination({ total: 2, initialPage: 1 });
+  const step = usePagination({ total: 3, initialPage: 1 });
 
   const chooseLanguage = (lang: Language) => {
     setUserData((prev) => {
@@ -63,6 +64,7 @@ const Login = () => {
               onChange={(lang) => setLanguage(lang)}
             />
           )}
+          {step.active === 3 && <ColorschemePicker />}
           <Group>
             {step.active !== 1 && (
               <Button
@@ -72,7 +74,7 @@ const Login = () => {
                 Back
               </Button>
             )}
-            {step.active !== 2 && (
+            {step.active !== 3 && (
               <Button
                 onClick={() => {
                   step.next();
@@ -82,7 +84,7 @@ const Login = () => {
                 Next
               </Button>
             )}
-            {step.active === 2 && (
+            {step.active === 3 && (
               <Button
                 onClick={() => {
                   chooseName(name);
