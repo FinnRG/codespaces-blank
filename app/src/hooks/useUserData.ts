@@ -28,6 +28,7 @@ export interface UserData {
   startedChallenges: StartedChallenge[];
   tourDone: boolean;
   badges: Badge[];
+  registeredAt: Date;
 }
 
 interface UseUserDataResult {
@@ -45,6 +46,7 @@ const useUserData = (): UseUserDataResult => {
     startedChallenges: [],
     tourDone: false,
     badges: [],
+    registeredAt: new Date(),
   };
 
   const [userData, setUserData] = useLocalStorage<UserData>({

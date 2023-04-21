@@ -169,8 +169,8 @@ const ChallengeProgress = () => {
           <Title>Challenge Completed</Title>
           <Text>
             Congratulations, you've successfully completed the challenge "
-            {t(`challenge-${challengeProgress?.challengeId}-title`)}". You've
-            earned {challenge.points} points.
+            {t(`challenge-${challenge.index}-title`)}". You've earned{" "}
+            {challenge.points} points.
           </Text>
           <Stack>
             <Group position="right" mt="xl">

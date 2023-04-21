@@ -15,6 +15,7 @@ import {
   Space,
 } from "@mantine/core";
 import { useState } from "react";
+import Stats from "./routes/Stats";
 
 const App = (): JSX.Element => {
   const { firstLogin } = useUserData();
@@ -47,6 +48,10 @@ const App = (): JSX.Element => {
     {
       path: "/login",
       element: <Login />,
+    },
+    {
+      path: "/stats",
+      element: <Stats />,
     },
   ]);
 
