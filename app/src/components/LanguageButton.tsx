@@ -9,6 +9,7 @@ import {
   PTFlag,
 } from "mantine-flagpack";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export type Language = "en" | "es" | "ca" | "pt" | "dk" | "de";
 
@@ -18,6 +19,7 @@ interface LanguageButtonProps {
 }
 
 const LanguageButton = (props: LanguageButtonProps) => {
+  const { t } = useTranslation("common");
   const [language, setLanguage] = useState<Language>(props.value ?? "en");
 
   useEffect(() => {
@@ -54,27 +56,27 @@ const LanguageButton = (props: LanguageButtonProps) => {
           rightIcon={<IconChevronDown size={18} stroke={1.5} />}
           pr={12}
         >
-          Language
+          {t("language")}
         </Button>
       </Menu.Target>
       <Menu.Dropdown>
         <Menu.Item onClick={() => setLanguage("en")} icon={<GBFlag w={17} />}>
-          English
+          {t("english")}
         </Menu.Item>
         <Menu.Item onClick={() => setLanguage("es")} icon={<ESFlag w={17} />}>
-          Spanish
+          {t("spanish")}
         </Menu.Item>
         <Menu.Item onClick={() => setLanguage("ca")} icon={<CAFlag w={17} />}>
-          Catalan
+          {t("catalan")}
         </Menu.Item>
         <Menu.Item onClick={() => setLanguage("pt")} icon={<PTFlag w={17} />}>
-          Portuguese
+          {t("portuguese")}
         </Menu.Item>
         <Menu.Item onClick={() => setLanguage("dk")} icon={<DKFlag w={17} />}>
-          Danish
+          {t("danish")}
         </Menu.Item>
         <Menu.Item onClick={() => setLanguage("de")} icon={<DEFlag w={17} />}>
-          German
+          {t("german")}
         </Menu.Item>
       </Menu.Dropdown>
     </Menu>

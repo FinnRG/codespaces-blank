@@ -10,7 +10,6 @@ i18n.use(initReactI18next).init({
   resources: localization,
   lng: "de",
   fallbackLng: "en",
-
   interpolation: {
     escapeValue: false,
   },

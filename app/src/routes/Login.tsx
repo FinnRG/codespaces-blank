@@ -15,8 +15,10 @@ import useUserData from "../hooks/useUserData";
 import { Link } from "react-router-dom";
 import Logo from "../components/Logo";
 import ColorschemePicker from "../components/ColorschemePicker";
+import { useTranslation } from "react-i18next";
 
 const Login = () => {
+  const { t } = useTranslation(["login", "common"]);
   const { setUserData } = useUserData();
   const [name, setName] = useInputState<string>("");
   const [language, setLanguage] = useState<Language>("en");
@@ -44,16 +46,14 @@ const Login = () => {
     <Container>
       <Paper radius="md" p="xl" withBorder>
         <Stack align="center">
-          <Title order={2}>Welcome to Let's Science</Title>
+          <Title order={2}>{t("welcome")}</Title>
           <Logo />
-          {step.active === 1 && <Title order={4}>Choose your name</Title>}
-          {step.active === 2 && (
-            <Title order={4}>Choose your preferred language</Title>
-          )}
+          {step.active === 1 && <Title order={4}>{t("chooseName")}</Title>}
+          {step.active === 2 && <Title order={4}>{t("chooseLang")}</Title>}
           {step.active === 1 && (
             <TextInput
-              label="Name"
-              placeholder="Your name"
+              label={t("name")}
+              placeholder={t("namePlaceholder").toString()}
               value={name}
               onChange={setName}
             />
@@ -71,7 +71,7 @@ const Login = () => {
                 onClick={() => step.previous()}
                 leftIcon={<IconArrowLeft />}
               >
-                Back
+                {t("common:back")}
               </Button>
             )}
             {step.active !== 3 && (
@@ -81,7 +81,7 @@ const Login = () => {
                 }}
                 rightIcon={<IconArrowRight />}
               >
-                Next
+                {t("common:next")}
               </Button>
             )}
             {step.active === 3 && (
@@ -95,7 +95,7 @@ const Login = () => {
                 component={Link}
                 to="/challenges"
               >
-                Done
+                {t("common:done")}
               </Button>
             )}
           </Group>

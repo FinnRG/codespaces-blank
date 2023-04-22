@@ -11,8 +11,10 @@ import Tour from "reactour";
 import { useState } from "react";
 import Card from "../components/Card";
 import { IconGraph, IconUser } from "@tabler/icons-react";
+import { useTranslation } from "react-i18next";
 
 const Home = (): JSX.Element => {
+  const { t } = useTranslation("common");
   const { userData, setTourDone } = useUserData();
   const points = calculatePoints(userData);
   const [tourOpen, setTourOpen] = useState(!userData.tourDone);
@@ -25,7 +27,7 @@ const Home = (): JSX.Element => {
             <StatsRing
               data={[
                 {
-                  label: "You are currently Level",
+                  label: t("currentLevel"),
                   stats: calculateLevel(points),
                   progress: calculateProgress(points),
                   color: "blue",
@@ -39,7 +41,7 @@ const Home = (): JSX.Element => {
           <Card bg="red" to="/login">
             <Stack pt="xs" align="center">
               <IconUser color="red" />
-              <Text>Change Profile</Text>
+              <Text>{t("changeProfile")}</Text>
             </Stack>
           </Card>
         </Grid.Col>
@@ -47,7 +49,7 @@ const Home = (): JSX.Element => {
           <Card bg="green" to="/stats">
             <Stack pt="xs" align="center">
               <IconGraph color="green" />
-              <Text>Challenge History</Text>
+              <Text>{t("challengeHistory")}</Text>
             </Stack>
           </Card>
         </Grid.Col>

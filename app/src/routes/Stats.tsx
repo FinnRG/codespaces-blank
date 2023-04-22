@@ -3,6 +3,7 @@ import useUserData from "../hooks/useUserData";
 import { formatDate } from "../utils/formatDate";
 import { Link } from "react-router-dom";
 import { calculatePoints } from "../utils/calculateLevel";
+import { useTranslation } from "react-i18next";
 
 interface InfoTextProps {
   label: React.ReactNode;
@@ -17,6 +18,7 @@ const InfoText = (props: InfoTextProps) => (
 );
 
 const Stats = () => {
+  const { t } = useTranslation(["common", "statistics"]);
   const { userData } = useUserData();
 
   const challengesCompleted = userData.completedChallenges.length;
@@ -24,18 +26,26 @@ const Stats = () => {
 
   return (
     <Stack align="center">
-      <Title order={2}>Statistics - {userData.name}</Title>
+      <Title order={2}>
+        {t("statistics:statistics")} - {userData.name}
+      </Title>
       <Stack align="right">
         <InfoText
-          label={"Registered:"}
+          label={t("statistics:registered").toString() + ":"}
           content={formatDate(userData.registeredAt)}
         />
-        <InfoText label="Total points earned" content={totalPoints} />
-        <InfoText label="Challenges completed:" content={challengesCompleted} />
+        <InfoText
+          label={t("statistics:totalPoints").toString() + ":"}
+          content={totalPoints}
+        />
+        <InfoText
+          label={t("statistics:challengesCompleted").toString() + ":"}
+          content={challengesCompleted}
+        />
       </Stack>
       <Space h="xs" />
       <Button component={Link} to="/challenges">
-        Back
+        {t("back")}
       </Button>
     </Stack>
   );

@@ -12,7 +12,7 @@ interface ChallengeCardProps {
 }
 
 const ChallengeCard = ({ challenge, colorMap }: ChallengeCardProps) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation("challenges");
   const { setTourDone } = useUserData();
 
   useEffect(() => {

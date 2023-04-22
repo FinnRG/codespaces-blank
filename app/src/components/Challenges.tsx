@@ -6,6 +6,7 @@ import { useListState } from "@mantine/hooks";
 import { Challenge } from "../types";
 import useUserData from "../hooks/useUserData";
 import ChallengeProgressCard from "./ChallengeProgressCard";
+import { useTranslation } from "react-i18next";
 
 const getCategories = (challenges: Challenge[]) => {
   const l = [...new Set(challenges.flatMap((ch) => ch.category))];
@@ -13,6 +14,7 @@ const getCategories = (challenges: Challenge[]) => {
 };
 
 const Challenges = (): JSX.Element => {
+  const { t } = useTranslation(["challenges", "common"]);
   const { userData } = useUserData();
   const [value, setValueHandlers] = useListState<string>(["My Challenges"]);
   const colors = colorMap(challenges);
@@ -27,7 +29,9 @@ const Challenges = (): JSX.Element => {
     >
       {userData.startedChallenges.length > 0 && (
         <Accordion.Item value="My Challenges">
-          <Accordion.Control>MY CHALLENGES</Accordion.Control>
+          <Accordion.Control>
+            {t("common:myChallenges").toUpperCase()}
+          </Accordion.Control>
           <Accordion.Panel>
             <Grid>
               {userData.startedChallenges.map((ch, key) => (
@@ -48,7 +52,9 @@ const Challenges = (): JSX.Element => {
           value={category}
           key={key}
         >
-          <Accordion.Control>{category.toUpperCase()}</Accordion.Control>
+          <Accordion.Control>
+            {t(category, { ns: "common" }).toUpperCase()}
+          </Accordion.Control>
           <Accordion.Panel>
             <Grid>
               {challenges

@@ -8,8 +8,8 @@ import { useState } from "react";
 import { isNumeric } from "../utils/isNumeric";
 
 const ChallengeView = (): JSX.Element => {
+  const { t } = useTranslation(["challenges", "common"]);
   const { id } = useParams();
-  const { t } = useTranslation();
   const { userData, setUserData } = useUserData();
   const [finished, setFinished] = useState<boolean>(false);
 
@@ -55,10 +55,10 @@ const ChallengeView = (): JSX.Element => {
         <Text>{t(`challenge-${parsedId}-content`)}</Text>
         <Group position="right" mt="xl">
           <Button component={Link} to="/challenges" variant="outline">
-            Go Back
+            {t("common:back")}
           </Button>
           <Button onClick={() => startChallenge(challenge)}>
-            Start Challenge
+            {t("common:startChallenge")}
           </Button>
         </Group>
       </Stack>

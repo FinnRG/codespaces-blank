@@ -6,8 +6,10 @@ import {
   Box,
 } from "@mantine/core";
 import { IconSun, IconMoon } from "@tabler/icons-react";
+import { useTranslation } from "react-i18next";
 
 const ColorschemePicker = () => {
+  const { t } = useTranslation(["common"]);
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
 
   return (
@@ -21,7 +23,7 @@ const ColorschemePicker = () => {
             label: (
               <Center>
                 <IconSun size="1rem" stroke={1.5} />
-                <Box ml={10}>Light</Box>
+                <Box ml={10}>{t("light")}</Box>
               </Center>
             ),
           },
@@ -30,7 +32,7 @@ const ColorschemePicker = () => {
             label: (
               <Center>
                 <IconMoon size="1rem" stroke={1.5} />
-                <Box ml={10}>Dark</Box>
+                <Box ml={10}>{t("dark")}</Box>
               </Center>
             ),
           },

@@ -1,6 +1,6 @@
 {
     "en": {
-        "translation": {
+        "challenges": {
             "challenge-1-title": "Use recycled paper",
             "challenge-1-content": "You probably already know that recycled paper is extremely environmentally friendly. However, it should be emphasized again: on average, 0.21 liters of water are saved per sheet through reusing instead of new production. As far as the required energy is concerned, there is a very clear effect here in large quantities. So, with a single decision to recycle paper, you can have multiple beneficial impacts - one more item on your list!",
             "challenge-2-title": "Picking up food with your own lunchbox",
@@ -59,10 +59,54 @@
             "challenge-28-content": "In a 35 square metre room, an average of 103 kWh of energy must be used to heat it in winter. But you can save up to 10% of the energy consumption if you make sure the heating is dust-free and clean! So take the feather duster and dust it off regularly! Note: Gas consumption (and therefore savings) is also measured in kWh, but it is usually many times higher than electricity consumption. As an example: a two-person household consumes an average of 2,180 kWh of electricity per year, but 12,000 kWh of gas - so don't be confused if the figures are different!",
             "challenge-29-title": "Listen to sustainable music",
             "challenge-29-content": "Are you the kind of person who likes to listen to music while you work? Then try out the Stream by Stream playlists! With every 1,000 streams and every 100 followers, a tree is planted and the musical career of yet unknown artists is supported. If you follow a playlist every day and stream fifty songs, you make 300g CO2 neutral every day and maybe discover your new favourite music."
+        },
+        "common": {
+            "daysLeft_one": "{{count}} day left",
+            "daysLeft_other": "{{count}} days left",
+            "myChallenges": "My challenges",
+            "water": "water",
+            "waste": "waste",
+            "co2": "CO2",
+            "energy": "energy",
+            "light": "Light",
+            "dark": "Dark",
+            "english": "English",
+            "spanish": "Spanish",
+            "catalan": "Catalan",
+            "portuguese": "Portuguese",
+            "danish": "Danish",
+            "german": "German",
+            "language": "language",
+            "challengeCompleted": "Challenge Completed",
+            "challengeCompletedText": "Congratulations, you've successfully completed the challenge \"{{challengeTitle}}\". You've earned {{pointCount}} points.",
+            "done": "Done",
+            "back": "Go back",
+            "next": "Next",
+            "cancelChallenge": "Cancel Challenge",
+            "addProgress": "Add Progress",
+            "startChallenge": "Start Challenge",
+            "challengeAlreadyDoneTitle": "Can't submit progress today",
+            "challengeAlreadyDoneText": "This challenge has already been completed today. Come back tomorrow!",
+            "changeProfile": "Change Profile",
+            "challengeHistory": "Challenge History",
+            "currentLevel": "You are currently level"
+        },
+        "login": {
+            "welcome": "Welcome to the Let's Science App",
+            "chooseName": "Choose your name",
+            "chooseLang": "Choose your preferred language",
+            "name": "Name",
+            "namePlaceholder": "Your Name"
+        },
+        "statistics": {
+            "statistics": "Statistics",
+            "registered": "Registered",
+            "totalPoints": "Total points earned",
+            "challengesCompleted": "Challenges completed"
         }
     },
     "de": {
-        "translation": {
+        "challenges": {
             "challenge-1-title": "Recycling-Papierblatt verwenden",
             "challenge-1-content": "Du weißt sicherlich schon, dass Recycling-Papier äußerst umweltfreundlich ist. Allerdings sollte man es erneut betonen: pro Blatt werden im Schnitt 0,21 Liter Wasser durch Wiederverwendung anstatt Neuproduktion eingespart. Was die benötigte Energie angeht, zeigt sich hier in großen Mengen ein sehr deutlicher Effekt. Mit einer einzigen Entscheidung für Recycling-Papier kannst du also gleich mehrere nützliche Auswirkungen erzielen - ein Punkt mehr auf deiner Liste!",
             "challenge-2-title": "Essen in eigener Dose abholen",
@@ -121,25 +165,81 @@
             "challenge-28-content": "In einem 35 Quadratmeter großen Raum muss im Winter im Schnitt 103 kWh Energie aufgewendet werden, um ihn zu beheizen. Aber du kannst bis zu 10 % des Energieverbrauchs sparen, wenn du dafür sorgst, dass die Heizung staubfrei und sauber ist! Also: Nimm den Staubwedel und entstaube sie regelmäßig! Hinweis: Der Gasverbrauch (und damit auch die Einsparung) wird ebenfalls in kWh gemessen, allerdings ist er in der Regel um ein Vielfaches höher als der Stromverbrauch. Als Beispiel: Ein Zweipersonenhaushalt verbraucht im Jahr im Durchschnitt 2.180 kWh Strom, aber 12.000 kWh Gas – verwirrt euch also nicht, wenn die Zahlen unterschiedlich hoch sind!",
             "challenge-29-title": "Nachhaltige Musik hören",
             "challenge-29-content": "Gehörst du zu den Menschen, die beim Arbeiten gerne Musik hören? Dann probiere doch die Playlists von Stream for Stream einmal aus! Mit jedem 1.000 Streams und jedem 100 Followern wird ein Baum gepflanzt und die musikalische Karriere noch unbekannter Künstler wird unterstützt. Wenn du täglich eine Playlist folgst und fünfzig Lieder streamst, machst du jeden Tag 300g CO2 neutral und entdeckst vielleicht deine neue Lieblingsmusik."
+        },
+        "common": {
+            "daysLeft_one": "Noch {{count}} Tage",
+            "daysLeft_other": "Noch {{count}} Tage",
+            "myChallenges": "Meine Challenges",
+            "water": "Wasser",
+            "waste": "Abfall",
+            "co2": "CO2",
+            "energy": "Energie",
+            "light": "Hell",
+            "dark": "Dunkel",
+            "english": "Englisch",
+            "spanish": "Spanisch",
+            "catalan": "Katalanish",
+            "portuguese": "Portugiesisch",
+            "danish": "Dänisch",
+            "german": "Deutsch",
+            "language": "Sprache",
+            "challengeCompleted": "Challenge erledigt",
+            "challengeCompletedText": "Herzlichen Glückwunsch, du hast die Challenge \"{{challengeTitle}}\" erfolgreich erledigt und {{pointCount}} Punkte erhalten.",
+            "done": "Fertig",
+            "back": "Zurück",
+            "next": "Weiter",
+            "cancelChallenge": "Challenge abbrechen",
+            "addProgress": "Erledigt",
+            "startChallenge": "Challenge starten",
+            "challengeAlreadyDoneTitle": "Heute nicht mehr möglich",
+            "challengeAlreadyDoneText": "Diese Challenge wurde in den letzten 24h schon erledigt. Komme morgen zurück!",
+            "changeProfile": "Profil ändern",
+            "challengeHistory": "Challenge Statistik",
+            "currentLevel": "Du bist gerade Level"
+        },
+        "login": {
+            "welcome": "Willkommen zur Let's Science App",
+            "chooseName": "Wähle deinen Namen",
+            "chooseLang": "Wähle deine bevorzugte Sprache",
+            "name": "Name",
+            "namePlaceholder": "Dein Name"
+        },
+        "statistics": {
+            "statistics": "Statistiken",
+            "registered": "Registriert",
+            "totalPoints": "Gesamtpunktzahl",
+            "challengesCompleted": "Erledigte Challenges"
         }
     },
     "es": {
-        "translation": {
+        "challenges": {
 
+        },
+        "common": {
+            
         }
     },
     "ca": {
-        "translation": {
+        "challenges": {
 
+        },
+        "common": {
+            
         }
     },
     "da": {
-        "translation": {
+        "challenges": {
 
+        },
+        "common": {
+            
         }
     },
     "pt": {
-        "translation": {
+        "challenges": {
+            
+        },
+        "common": {
             
         }
     }

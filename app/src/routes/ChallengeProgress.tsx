@@ -67,7 +67,7 @@ const showFireworks = () => {
 const ChallengeProgress = () => {
   const { userData, setUserData } = useUserData();
   const { id } = useParams();
-  const { t } = useTranslation();
+  const { t } = useTranslation(["challenges", "common"]);
   const parsedId =
     id === undefined || !isNumeric(id) || parseInt(id) > challenges.length
       ? 1
@@ -166,16 +166,17 @@ const ChallengeProgress = () => {
     return (
       <Container>
         <Stack align="center">
-          <Title>Challenge Completed</Title>
+          <Title>{t("common:challengeCompleted")}</Title>
           <Text>
-            Congratulations, you've successfully completed the challenge "
-            {t(`challenge-${challenge.index}-title`)}". You've earned{" "}
-            {challenge.points} points.
+            {t("common:challengeCompletedText", {
+              challengeTitle: t(`challenge-${challenge.index}-title`),
+              pointCount: challenge.points,
+            })}
           </Text>
           <Stack>
             <Group position="right" mt="xl">
               <Button color="green" component={Link} to="/challenges">
-                Done
+                {t("common:done")}
               </Button>
             </Group>
           </Stack>
@@ -192,25 +193,27 @@ const ChallengeProgress = () => {
         {showChallengeAlert && (
           <Alert
             icon={<IconAlertCircle size={16} />}
-            title="Can't submit progress today"
+            title={t("common:challengeAlreadyDoneTitle")}
           >
-            This challenge has already been completed today. Come back tomorrow!
+            {t("common:challengeAlreadyDoneText")}
           </Alert>
         )}
         <Stack>
           <Group position="right" mt="xl">
             <Button component={Link} to="/challenges" variant="outline">
-              Go Back
+              {t("common:back")}
             </Button>
             <Button color="red" onClick={() => cancelProgress()}>
-              Cancel Challenge
+              {t("common:cancelChallenge")}
             </Button>
           </Group>
           {challenge.type === "todo" && (
             <Button onClick={() => addProgress(1)}>Done</Button>
           )}
           {challenge.type === "weekly" && !showChallengeAlert && (
-            <Button onClick={() => addProgress(1)}>Add Progress</Button>
+            <Button onClick={() => addProgress(1)}>
+              {t("common:addProgress")}
+            </Button>
           )}
         </Stack>
       </Stack>

@@ -13,7 +13,7 @@ const ChallengeProgressCard = ({
   challenge,
   startedChallenge,
 }: ChallengeProgressCardProps) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation(["challenges", "common"]);
   const progress =
     challenge.type === "todo" ? 0 : (startedChallenge.progress / 7) * 100;
 
@@ -29,7 +29,9 @@ const ChallengeProgressCard = ({
         <div>
           {challenge.type === "weekly" && (
             <Group position="right">
-              <Badge>{7 - startedChallenge.progress} days left</Badge>
+              <Badge>
+                {t("common:daysLeft", { count: 7 - startedChallenge.progress })}
+              </Badge>
             </Group>
           )}
           {challenge.type === "todo" && (
@@ -38,7 +40,7 @@ const ChallengeProgressCard = ({
             </Group>
           )}
           <Text size="lg" weight={500} mt="md">
-            {t(`challenge-${challenge.index}-title`)}
+            {t(`challenges:challenge-${challenge.index}-title`)}
           </Text>
         </div>
         <div>
@@ -53,7 +55,7 @@ const ChallengeProgressCard = ({
             color="dimmed"
             size="sm"
           >
-            {t(`challenge-${challenge.index}-content`)}
+            {t(`challenges:challenge-${challenge.index}-content`)}
           </Text>
           <Progress value={progress} mt={5} />
         </div>
