@@ -20,8 +20,8 @@ const Home = (): JSX.Element => {
   const [tourOpen, setTourOpen] = useState(!userData.tourDone);
 
   return (
-    <Stack>
-      <Grid px="sm">
+    <Stack px="xs">
+      <Grid>
         <Grid.Col span={12}>
           <Card>
             <StatsRing
