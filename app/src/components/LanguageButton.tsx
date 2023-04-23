@@ -11,7 +11,7 @@ import {
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-export type Language = "en" | "es" | "ca" | "pt" | "dk" | "de";
+export type Language = "en" | "es" | "ca" | "pt" | "da" | "de";
 
 interface LanguageButtonProps {
   value?: Language;
@@ -33,7 +33,7 @@ const LanguageButton = (props: LanguageButtonProps) => {
       <CAFlag w={17} />
     ) : language === "de" ? (
       <DEFlag w={17} />
-    ) : language === "dk" ? (
+    ) : language === "da" ? (
       <DKFlag w={17} />
     ) : language === "en" ? (
       <GBFlag w={17} />
@@ -72,7 +72,7 @@ const LanguageButton = (props: LanguageButtonProps) => {
         <Menu.Item onClick={() => setLanguage("pt")} icon={<PTFlag w={17} />}>
           {t("portuguese")}
         </Menu.Item>
-        <Menu.Item onClick={() => setLanguage("dk")} icon={<DKFlag w={17} />}>
+        <Menu.Item onClick={() => setLanguage("da")} icon={<DKFlag w={17} />}>
           {t("danish")}
         </Menu.Item>
         <Menu.Item onClick={() => setLanguage("de")} icon={<DEFlag w={17} />}>

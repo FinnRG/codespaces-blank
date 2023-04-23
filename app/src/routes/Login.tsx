@@ -18,26 +18,18 @@ import ColorschemePicker from "../components/ColorschemePicker";
 import { useTranslation } from "react-i18next";
 
 const Login = () => {
-  const { t } = useTranslation(["login", "common"]);
+  const { t, i18n } = useTranslation(["login", "common"]);
   const { setUserData } = useUserData();
   const [name, setName] = useInputState<string>("");
   const [language, setLanguage] = useState<Language>("en");
   const step = usePagination({ total: 3, initialPage: 1 });
 
-  const chooseLanguage = (lang: Language) => {
-    setUserData((prev) => {
-      return {
-        ...prev,
-        preferredLanguage: lang,
-      };
-    });
-  };
-
-  const chooseName = (name: string) => {
+  const setProfile = () => {
     setUserData((prev) => {
       return {
         ...prev,
         name,
+        preferredLanguage: language,
       };
     });
   };
@@ -61,7 +53,10 @@ const Login = () => {
           {step.active === 2 && (
             <LanguageButton
               value={language}
-              onChange={(lang) => setLanguage(lang)}
+              onChange={(lang) => {
+                setLanguage(lang);
+                i18n.changeLanguage(lang);
+              }}
             />
           )}
           {step.active === 3 && <ColorschemePicker />}
@@ -86,10 +81,7 @@ const Login = () => {
             )}
             {step.active === 3 && (
               <Button
-                onClick={() => {
-                  chooseName(name);
-                  chooseLanguage(language);
-                }}
+                onClick={setProfile}
                 rightIcon={<IconCheck />}
                 color="green"
                 component={Link}

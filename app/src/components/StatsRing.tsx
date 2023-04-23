@@ -17,10 +17,10 @@ const icons = {
 };
 
 export const StatsRing = ({ data }: StatsRingProps) => {
-  const stats = data.map((stat) => {
+  const stats = data.map((stat, key) => {
     const Icon = icons[stat.icon];
     return (
-      <Group>
+      <Group key={key}>
         <RingProgress
           size={80}
           roundCaps
