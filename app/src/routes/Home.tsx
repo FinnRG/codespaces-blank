@@ -18,6 +18,7 @@ const Home = (): JSX.Element => {
   const { userData, setTourDone } = useUserData();
   const points = calculatePoints(userData);
   const [tourOpen, setTourOpen] = useState(!userData.tourDone);
+  const [tourStep, setTourStep] = useState<number | null>(null);
 
   return (
     <Stack px="xs">
@@ -54,19 +55,23 @@ const Home = (): JSX.Element => {
           </Card>
         </Grid.Col>
       </Grid>
-      <Challenges />
+      <Challenges waterOpen={tourStep === 3} />
       <Tour
         isOpen={tourOpen}
         onRequestClose={() => {
           setTourOpen(false);
           setTourDone();
         }}
+        getCurrentStep={(step) => setTourStep(step)}
         steps={[
           {
             selector: ".tour-step-1",
             content: (
               <Container>
-                <Text>Welcome to Let's Science</Text>
+                <Text>
+                  Welcome to the Let's Science App. Let's start with a quick
+                  tour of the app!
+                </Text>
               </Container>
             ),
           },
@@ -74,7 +79,10 @@ const Home = (): JSX.Element => {
             selector: ".tour-step-2",
             content: (
               <Container>
-                <Text>Here challenges</Text>
+                <Text>
+                  Here is a list of the challenges that are currently available
+                  to you.
+                </Text>
               </Container>
             ),
           },
@@ -82,15 +90,21 @@ const Home = (): JSX.Element => {
             selector: ".tour-step-3",
             content: (
               <Container>
-                <Text>Here challenge category. Click here</Text>
+                <Text>
+                  All challenges are grouped into categories. This makes it
+                  easier for you to navigate through them and helps you choose
+                  the category you want to contribute to the most. Click on a
+                  category to see all the challenges.
+                </Text>
               </Container>
             ),
           },
           {
             selector: ".tour-step-4",
+            resizeObservables: [".tour-step-4"],
             content: (
               <Container>
-                <Text>Here challenge. Click here</Text>
+                <Text>This is a challenge. Click on it to find out more.</Text>
               </Container>
             ),
           },

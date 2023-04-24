@@ -7,18 +7,31 @@ import { Challenge } from "../types";
 import useUserData from "../hooks/useUserData";
 import ChallengeProgressCard from "./ChallengeProgressCard";
 import { useTranslation } from "react-i18next";
+import { useEffect } from "react";
 
 const getCategories = (challenges: Challenge[]) => {
   const l = [...new Set(challenges.flatMap((ch) => ch.category))];
   return l;
 };
 
-const Challenges = (): JSX.Element => {
+interface ChallengesProps {
+  waterOpen?: boolean;
+}
+
+const Challenges = (props: ChallengesProps): JSX.Element => {
   const { t } = useTranslation(["challenges", "common"]);
   const { userData } = useUserData();
   const [value, setValueHandlers] = useListState<string>(["My Challenges"]);
   const colors = colorMap(challenges);
   const categories = getCategories(challenges);
+
+  useEffect(() => {
+    if (props.waterOpen) {
+      setValueHandlers.append("water");
+    } else {
+      setValueHandlers.setState((prev) => prev.filter((v) => v !== "water"));
+    }
+  }, [props.waterOpen]);
 
   return (
     <Accordion
