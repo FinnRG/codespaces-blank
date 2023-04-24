@@ -1,15 +1,9 @@
 import { Button, Menu } from "@mantine/core";
 import { IconChevronDown } from "@tabler/icons-react";
-import {
-  CAFlag,
-  DEFlag,
-  DKFlag,
-  ESFlag,
-  GBFlag,
-  PTFlag,
-} from "mantine-flagpack";
+import { DEFlag, DKFlag, ESFlag, GBFlag, PTFlag } from "mantine-flagpack";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { ESCTFlag } from "./ESCT";
 
 export type Language = "en" | "es" | "ca" | "pt" | "da" | "de";
 
@@ -30,7 +24,7 @@ const LanguageButton = (props: LanguageButtonProps) => {
 
   const languageIcon =
     language === "ca" ? (
-      <CAFlag w={17} />
+      <ESCTFlag w={17} />
     ) : language === "de" ? (
       <DEFlag w={17} />
     ) : language === "da" ? (
@@ -66,7 +60,7 @@ const LanguageButton = (props: LanguageButtonProps) => {
         <Menu.Item onClick={() => setLanguage("es")} icon={<ESFlag w={17} />}>
           {t("spanish")}
         </Menu.Item>
-        <Menu.Item onClick={() => setLanguage("ca")} icon={<CAFlag w={17} />}>
+        <Menu.Item onClick={() => setLanguage("ca")} icon={<ESCTFlag w={17} />}>
           {t("catalan")}
         </Menu.Item>
         <Menu.Item onClick={() => setLanguage("pt")} icon={<PTFlag w={17} />}>

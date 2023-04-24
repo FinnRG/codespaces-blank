@@ -3,5 +3,5 @@ export interface Challenge {
   points: number;
   difficulty: string;
   category: string;
-  type: "weekly" | "todo" | string
+  type: "weekly" | "todo" | string;
 }
